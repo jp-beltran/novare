@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 export function SiteHeader({ active }: { active?: "portfolio" }) {
   return (
@@ -12,6 +13,7 @@ export function SiteHeader({ active }: { active?: "portfolio" }) {
           <Link className="text-on-surface-variant transition-colors hover:text-primary" href="/#processo">Processo</Link>
           <Link className="text-on-surface-variant transition-colors hover:text-primary" href="/#faq">FAQ</Link>
         </nav>
+        <ThemeToggle />
         <Link className="ml-auto hidden min-h-11 items-center rounded bg-primary-container px-6 font-semibold text-white transition hover:bg-primary hover:text-[#23005c] md:inline-flex md:ml-0" href="/solicitar-orcamento">Pedir orçamento</Link>
         <details className="group relative ml-auto md:hidden">
           <summary className="grid h-11 w-11 cursor-pointer list-none place-items-center rounded border border-outline-variant" aria-label="Abrir menu"><span className="icon">menu</span></summary>
