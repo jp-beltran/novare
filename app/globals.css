@@ -8,21 +8,21 @@
   :root,
   :root[data-theme="dark"] {
     color-scheme: dark;
-    --background: 19 19 20;
-    --surface: 19 19 20;
-    --surface-lowest: 14 14 15;
-    --surface-low: 28 27 28;
-    --surface-container: 32 31 32;
-    --surface-high: 42 42 43;
-    --surface-highest: 53 52 54;
-    --on-surface: 229 226 227;
-    --on-surface-variant: 203 195 214;
+    --background: 10 10 15;
+    --surface: 10 10 15;
+    --surface-lowest: 8 8 12;
+    --surface-low: 15 15 23;
+    --surface-container: 20 20 31;
+    --surface-high: 28 28 40;
+    --surface-highest: 36 36 51;
+    --on-surface: 244 244 248;
+    --on-surface-variant: 154 154 172;
     --outline: 149 142 159;
-    --outline-variant: 73 68 84;
-    --primary: 208 188 255;
-    --primary-container: 130 87 229;
-    --secondary: 65 239 121;
-    --tertiary: 255 185 100;
+    --outline-variant: 35 35 51;
+    --primary: 139 92 246;
+    --primary-container: 139 92 246;
+    --secondary: 74 222 128;
+    --tertiary: 59 130 246;
     --error: 255 180 171;
   }
   :root[data-theme="light"] {
@@ -66,8 +66,27 @@
     font-feature-settings: "liga";
   }
   .filled-icon { font-variation-settings: "FILL" 1; }
+  .brand-gradient {
+    background-image: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 50%, #4ade80 100%);
+  }
+  .brand-gradient-text {
+    background-image: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 50%, #4ade80 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+  }
   .hero-glow::after {
     content: "";
-    @apply pointer-events-none absolute -right-52 -top-64 h-[600px] w-[600px] rounded-full bg-primary-container/20 blur-[120px];
+    @apply pointer-events-none absolute inset-0 -z-10;
+    background:
+      linear-gradient(135deg, rgba(59, 130, 246, .14), rgba(139, 92, 246, .08) 48%, rgba(74, 222, 128, .12)),
+      #0a0a0f;
+  }
+  .ticker-track {
+    animation: ticker 22s linear infinite;
+  }
+  @keyframes ticker {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
   }
 }

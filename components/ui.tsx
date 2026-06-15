@@ -16,7 +16,7 @@ export function ButtonLink({
 }: {
   href: string;
   children: ReactNode;
-  variant?: "purple" | "green" | "outline";
+  variant?: "purple" | "green" | "outline" | "gradient";
 }) {
   const styles = {
     purple:
@@ -24,6 +24,8 @@ export function ButtonLink({
     green: "border-secondary bg-secondary text-[#002109] hover:brightness-110",
     outline:
       "border-outline-variant bg-transparent text-on-surface hover:border-primary hover:bg-surface-high",
+    gradient:
+      "brand-gradient border-transparent text-[#06100b] hover:brightness-110",
   };
   return (
     <Link

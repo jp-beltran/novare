@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { ThemeToggle } from "@/components/theme-toggle";
@@ -6,11 +7,18 @@ export function SiteHeader({ active }: { active?: "portfolio" }) {
   return (
     <header className="fixed inset-x-0 top-0 z-50 h-20 border-b border-outline-variant bg-background/80 backdrop-blur-md">
       <div className="mx-auto flex h-20 max-w-content items-center gap-6 px-6">
-        <Link className="font-display text-2xl font-bold" href="/">
-          Novare
+        <Link className="block" href="/" aria-label="Novare">
+          <Image
+            className="h-12 w-32 object-cover object-center"
+            src="/assets/logo-side.jpeg"
+            alt="Novare"
+            width={180}
+            height={72}
+            priority
+          />
         </Link>
         <nav
-          className="ml-auto hidden items-center gap-12 md:flex"
+          className="ml-auto hidden items-center gap-9 md:flex"
           aria-label="Navegação principal"
         >
           <Link
@@ -27,25 +35,25 @@ export function SiteHeader({ active }: { active?: "portfolio" }) {
           </Link>
           <Link
             className="text-on-surface-variant transition-colors hover:text-primary"
-            href="/#processo"
+            href="/#precos"
           >
-            Processo
+            Preços
           </Link>
           <Link
             className="text-on-surface-variant transition-colors hover:text-primary"
-            href="/#faq"
+            href="/#contato"
           >
-            FAQ
+            Contato
           </Link>
         </nav>
         <div className="hidden md:block">
           <ThemeToggle />
         </div>
         <Link
-          className="ml-auto hidden min-h-11 items-center rounded bg-primary-container px-6 font-semibold text-white transition hover:bg-primary hover:text-[#23005c] md:inline-flex md:ml-0"
+          className="ml-auto hidden min-h-11 items-center rounded bg-white px-6 font-semibold text-[#06100b] transition hover:bg-secondary md:ml-0 md:inline-flex"
           href="/solicitar-orcamento"
         >
-          Pedir orçamento
+          Falar com a Novare
         </Link>
         <details className="group relative ml-auto md:hidden">
           <summary
@@ -63,9 +71,9 @@ export function SiteHeader({ active }: { active?: "portfolio" }) {
             </Link>
             <Link
               className="rounded p-3 hover:bg-surface-highest"
-              href="/pacotes"
+              href="/#servicos"
             >
-              Pacotes
+              Serviços
             </Link>
             <Link
               className="rounded p-3 hover:bg-surface-highest"
@@ -75,9 +83,21 @@ export function SiteHeader({ active }: { active?: "portfolio" }) {
             </Link>
             <Link
               className="rounded p-3 hover:bg-surface-highest"
+              href="/#precos"
+            >
+              Preços
+            </Link>
+            <Link
+              className="rounded p-3 hover:bg-surface-highest"
+              href="/#contato"
+            >
+              Contato
+            </Link>
+            <Link
+              className="rounded p-3 font-semibold text-primary hover:bg-surface-highest"
               href="/solicitar-orcamento"
             >
-              Orçamento
+              Falar com a Novare
             </Link>
             <div className="mt-2 flex justify-end border-t border-outline-variant pt-3">
               <ThemeToggle />
@@ -93,19 +113,28 @@ export function SiteFooter({ compact = false }: { compact?: boolean }) {
   if (compact)
     return (
       <footer className="border-t border-outline-variant bg-surface-container px-6 py-12 text-center">
-        <p>© 2024 Novare. Alta performance em cada pixel.</p>
+        <p>
+          © 2024 Novare. Seu próximo cliente está no Google. A gente te coloca
+          na frente dele.
+        </p>
       </footer>
     );
   return (
     <footer className="border-t border-outline-variant bg-surface-container pb-8 pt-20">
       <div className="mx-auto grid max-w-content grid-cols-1 gap-12 px-6 md:grid-cols-2 lg:grid-cols-4">
         <div className="flex flex-col items-start gap-3">
-          <Link className="font-display text-2xl font-bold" href="/">
-            Novare
+          <Link className="block" href="/" aria-label="Novare">
+            <Image
+              className="h-16 w-44 object-cover object-center"
+              src="/assets/logo-side.jpeg"
+              alt="Novare"
+              width={220}
+              height={88}
+            />
           </Link>
           <p>
-            Alta performance em cada pixel. Focados em resultados reais para o
-            seu negócio.
+            Seu próximo cliente está no Google. A gente te coloca na frente
+            dele.
           </p>
         </div>
         <div className="flex flex-col items-start gap-2">
@@ -126,9 +155,15 @@ export function SiteFooter({ compact = false }: { compact?: boolean }) {
           </Link>
           <Link
             className="text-on-surface-variant hover:text-secondary"
-            href="/pacotes"
+            href="/#precos"
           >
-            Planos
+            Preços
+          </Link>
+          <Link
+            className="text-on-surface-variant hover:text-secondary"
+            href="/#contato"
+          >
+            Contato
           </Link>
         </div>
         <div className="flex flex-col items-start gap-2">
@@ -163,7 +198,8 @@ export function SiteFooter({ compact = false }: { compact?: boolean }) {
         </div>
       </div>
       <div className="mx-auto mt-16 max-w-content border-t border-outline-variant/50 px-6 pt-6 text-center text-on-surface-variant">
-        © 2024 Novare. Alta performance em cada pixel.
+        © 2024 Novare. Seu próximo cliente está no Google. A gente te coloca na
+        frente dele.
       </div>
     </footer>
   );

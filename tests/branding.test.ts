@@ -20,8 +20,9 @@ test("uses Novare as the store identity", () => {
   assert.match(contents, /contato@novare\.com\.br/);
 });
 
-test("preserves the existing pixel slogan", () => {
+test("uses the footer tagline requested for Novare", () => {
   const siteShell = readFileSync("components/site-shell.tsx", "utf8");
 
-  assert.match(siteShell, /Alta performance em cada pixel/);
+  assert.match(siteShell, /Seu próximo cliente está no Google/);
+  assert.match(siteShell, /A gente te coloca[\s\S]*na frente dele/);
 });
