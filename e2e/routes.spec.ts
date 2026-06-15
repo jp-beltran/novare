@@ -54,3 +54,17 @@ test("briefing validates required fields and redirects after valid submission", 
   await expect(page).toHaveURL(/\/sucesso$/);
   await expect(page.getByRole("heading", { name: "Briefing recebido!" })).toBeVisible();
 });
+
+test("keeps the theme toggle in the desktop header and inside the mobile menu", async ({ browser }) => {
+  const desktop = await browser.newPage({ viewport: { width: 1440, height: 900 } });
+  await desktop.goto("/");
+  await expect(desktop.locator('button[aria-label^="Ativar modo"]:visible')).toHaveCount(1);
+  await desktop.close();
+
+  const mobile = await browser.newPage({ viewport: { width: 375, height: 812 } });
+  await mobile.goto("/");
+  await expect(mobile.locator('button[aria-label^="Ativar modo"]:visible')).toHaveCount(0);
+  await mobile.locator('summary[aria-label="Abrir menu"]').click();
+  await expect(mobile.locator('button[aria-label^="Ativar modo"]:visible')).toHaveCount(1);
+  await mobile.close();
+});
